@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Navbar</title>
+<style>
+    * {
+        margin: 0;
+    }
+
+    nav {
+        background-color: #1f2937;
+        padding: 12px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav .brand {
+        color: #f9fafb;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        color: #f9fafb;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: #2563eb;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    nav ul.right {
+        margin-left: auto;
+    }
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'list_book' %}">List Books</a></li>
+            <li><a href="{% url 'create_book' %}">Add Book</a></li>
+        {% endif %}
+    </ul>
+
+    <ul class="right">
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login / Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+</body>
+</html>

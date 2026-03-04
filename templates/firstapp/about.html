@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+<div style="text-align:center">
+  {% include 'firstapp/navbar.html' %}
+  <h1>About us page</h1>
+    {%if isActive%}
+    <p> this is about us page</p>
+    <p>Email of student is {{email}}</p>
+    <p>Name of student is {{name}}</p>
+    {% endif%}
+    <p>{{name_using_in_form}}</p>
+</div>
+</body>
+</html>

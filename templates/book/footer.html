@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>footer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <style>
+    footer {
+      background-color: #1f2937;
+      color: #f9fafb;
+      padding: 40px 20px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      margin: 0 31px 15px 0;
+      color: #2563eb;
+    }
+
+    .footer-section p, .footer-section ul, .footer-section .social-icons {
+      font-size: 0.95em;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #f9fafb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #2563eb;
+    }
+
+    .footer-section .social-icons a {
+      font-size: 1.5em;
+      margin-right: 15px;
+      color: #f9fafb;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-section .social-icons a:hover {
+      color: #2563eb;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 25px;
+      border-top: 1px solid #374151;
+      padding-top: 15px;
+      font-size: 0.85em;
+      color: #9ca3af;
+    }
+
+</style>
+</head>
+<body>
+<footer>
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h3>MyLibrary</h3>
+      <p>Your one-stop library management app. Browse, add, and manage your books easily!</p>
+    </div>
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="{% url 'list_book' %}">Books</a></li>
+        <li><a href="{% url 'create_book' %}">Add Book</a></li>
+      </ul>
+    </div>
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 MyLibrary. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

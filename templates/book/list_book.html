@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Books</title>
+<style>
+    h1 {
+        text-align: center;
+        margin: 30px 0;
+        color: #111827;
+    }
+    h3 {
+        margin: 30px 0 0 20px;
+        color: #111827;
+    }
+    h3 span{
+        color: blue;
+    }
+
+    .book-list {
+        max-width: 900px;
+        margin: 0 auto 50px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .book-card {
+        display: flex;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .book-card img {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .book-details {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    h2 {
+    margin: 20px 0 20px 0;
+    text-align: center;
+    }
+
+    .book-details a {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+    .book-details a:hover {
+        color: #2563eb;
+        text-decoration: underline;
+    }
+
+    .book-details p {
+        margin: 4px 0;
+        color: #374151;
+    }
+    .book-details .author,
+    .book-details .published {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #6b7280;
+    }
+</style>
+</head>
+<body>
+
+{% extends 'book/base.html' %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<h3>Welcome, <span>{{ username }}!</span></h3>
+{% endif %}
+<!--<h1>Books Listed Here</h1>-->
+
+{% load custom_tags %}
+<!--<h1>Date: {% datetime_data %}</h1>-->
+
+
+<h2>{{name|get_value}}</h2>
+<div class="book-list">
+    {% for book in books %}
+    <div class="book-card">
+        {% if book.image %}
+        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+        {% else %}
+        <img src="https://via.placeholder.com/150x200?text=No+Image" alt="No Image">
+        {% endif %}
+        <div class="book-details">
+            <a href="{% url 'detail_book' book.pk %}">{{ book.title }}</a>
+            <p>{{ book.description|truncatewords:25 }}</p>
+            <p class="author">Author: {{ book.author }}</p>
+            <p class="published">Published: {{ book.published_date }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>
