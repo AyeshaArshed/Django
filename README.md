@@ -7,10 +7,10 @@ FirstApp is a Django-based web application that demonstrates URL routing, media 
 **Books**: Manages book-related data and CRUD operations.
 <br>
 **Student**: Manages student information and records.
+<br><br>
+**Create a superuser (for admin access, add student data):**
 <br>
-Create a superuser (for admin access, add student data):
-<br>
-**python manage.py createsuperuser**
+python manage.py createsuperuser
 <br>
 **Apply migrations:**
 <br>
